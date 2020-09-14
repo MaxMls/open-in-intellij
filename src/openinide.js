@@ -216,6 +216,13 @@
             // IntelliJ REST API!
             // http://develar.org/idea-rest-api/
             //
+
+            try{
+                fileString = fileString.split('').slice( fileString.indexOf(':')-1).join('')
+            } catch {}
+
+
+
             let ideOpenUrl = intellijServer + '/api/file?file=' + encodeURI(fileString);
 
             if (lineNumber) {
