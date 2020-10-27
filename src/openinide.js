@@ -208,6 +208,7 @@
                 hasRootPath = true;
             }
 
+            console.log('Open In IntelliJ - foundRootPath:', foundRootPath);
             console.log('Open In IntelliJ - destination resource path:', fileString);
 
             const intellijServer = localStorage["intellijserver"] || 'http://localhost:63342';
@@ -218,10 +219,9 @@
             //
 
             try{
-                fileString = fileString.split('').slice( fileString.indexOf(':')-1).join('')
+                //fileString = fileString.split('').slice( fileString.indexOf(':')-1).join('')
+                fileString = url.replaceAll('webpack:/', '')
             } catch {}
-
-
 
             let ideOpenUrl = intellijServer + '/api/file?file=' + encodeURI(fileString);
 
